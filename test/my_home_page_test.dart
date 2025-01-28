@@ -13,12 +13,16 @@ void main(){
     expect(messageFinder, findsOneWidget);
   });
 
-  testWidgets('Find widget by Key', (WidgetTester tester) async{
+  testWidgets('Find appBar with title', (WidgetTester tester) async{
     await tester.pumpWidget(const MyHomePage(title: "T", message: "M",));
 
     Finder appBarFinder = find.byKey(const Key("appBar"));
-
+    
     expect(appBarFinder, findsOneWidget);
+
+    Finder appBarHasTitle = find.descendant(of: appBarFinder, matching: find.text("T"));
+    
+    expect(appBarHasTitle, findsOneWidget);
   });
 
   testWidgets('Find widget by type', (WidgetTester tester) async{
