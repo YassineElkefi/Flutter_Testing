@@ -30,5 +30,15 @@ void main(){
   });
   });
 
+  test("Called get method on client once", (){
+    MockClient mockClient = MockClient();
+    when(mockClient.get(Uri.parse('https://jsonplaceholder.typicode.com/albums/1'))).thenAnswer((_) async{
+      return http.Response('{"userId": 1, "id": 2, "title": "Mock"}', 200);
+    });
+
+    fetchAlbum(mockClient);
+    verify(mockClient.get(Uri.parse('https://jsonplaceholder.typicode.com/albums/1'))).called(1);
+  });
+
  
 }
