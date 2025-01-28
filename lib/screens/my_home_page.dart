@@ -9,13 +9,16 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return MaterialApp(
+      title: 'Flutter Demo',
+      home: Scaffold(
       appBar: AppBar(
         title: Text(title),
       ),
       body: Center(
         child: Text(message),
       ),
+    ),
     );
   }
 }
