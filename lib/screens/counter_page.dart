@@ -8,11 +8,14 @@ class CounterPage extends StatefulWidget {
 }
 
 class _CounterPageState extends State<CounterPage> {
-  int _counter = 0;
+  num _result = 0;
 
-  void _incrementCounter() {
+  TextEditingController numberController = TextEditingController();
+
+  void _calculateTheSquare(){
+    num numberInput = num.parse(numberController.text.trim());
     setState(() {
-      _counter++;
+      _result = numberInput * numberInput;
     });
   }
 
@@ -26,19 +29,18 @@ class _CounterPageState extends State<CounterPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text("Counter Value : ",
-              style: TextStyle(fontSize: 20),
+            TextField(
+              controller: numberController,
+              keyboardType: TextInputType.number,
             ),
             Text(
-              "$_counter",
-              key: const Key("counterValue"),
+              "$_result",
               style: const TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 20,),
             ElevatedButton(
-              key: const Key("incrementButton"),
-              onPressed: _incrementCounter,
-              child: const Text("Increment Counter"),
+              onPressed: _calculateTheSquare,
+              child: const Text("Calculate"),
             ),
           ],),
       ),
