@@ -3,7 +3,16 @@ import 'package:test/test.dart';
 
 void main(){
 
-  test('Counter value should be incremented', (){
+
+  group('Test counter start, Increment & decrement', (){
+
+    test('Counter initial value should be 0', (){
+      Counter counter = Counter();
+
+      expect(counter.value, 0);
+    });
+
+    test('Counter value should be incremented', (){
 
     Counter counter = Counter();
 
@@ -12,13 +21,16 @@ void main(){
     expect(counter.value, 1);
   });
 
-  test('Counter should be decremented', (){
-    Counter counter = Counter();
+    test('Counter value should be decremented', (){
+      Counter counter = Counter();
 
-    counter.decrement();
+      counter.decrement();
 
-    expect(counter.value, -1);
+      expect(counter.value, -1);
+    });
+
   });
+  
 
 
 }
