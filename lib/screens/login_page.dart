@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_testing/screens/success_page.dart';
+import 'package:flutter_testing/screens/product_list_page.dart';
 import 'package:http/http.dart' as http;
 
 class LoginPage extends StatefulWidget {
@@ -36,10 +36,10 @@ class _LoginPageState extends State<LoginPage> {
         },
       );
       if(response.statusCode == 200){
-        final data = jsonDecode(response.body);
+        jsonDecode(response.body);
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => SuccessPage(token: data['token'],)),
+          MaterialPageRoute(builder: (context) => const ProductListPage()),
         );
       }else{
         final errorData = jsonDecode(response.body);
