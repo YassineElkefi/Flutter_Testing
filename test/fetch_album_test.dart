@@ -8,6 +8,7 @@ import 'fetch_album_test.mocks.dart';
 @GenerateMocks([http.Client])
 void main(){
 
+  group('Fetch album test', (){
   test('Returns an Album if the http call completes successfully', () async {
     final mockClient = MockClient();
     when(mockClient.get(Uri.parse('https://jsonplaceholder.typicode.com/albums/1'))).thenAnswer((_) async{
@@ -16,4 +17,15 @@ void main(){
 
     expect(await fetchAlbum(mockClient), isA<Album>());
   });
+
+  test("throws an exception if the http call completes with error", (){
+    MockClient mockClient = MockClient();
+    when(mockClient.get(Uri.parse('https://jsonplaceholder.typicode.com/albums/1'))).thenAnswer((_) async{
+      return http.Response('Not Found', 404);
+    });
+    expect(fetchAlbum(mockClient), throwsException);
+  });
+  });
+
+ 
 }
