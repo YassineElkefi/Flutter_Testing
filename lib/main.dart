@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_testing/screens/counter_page.dart';
+import 'package:flutter_testing/screens/todo_list_page.dart';
 
 void main() {
-  runApp(MaterialApp(
-    home: CounterPage(),
-  ));
+  runApp(const TodoListPage());
 }
 
