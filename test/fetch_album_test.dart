@@ -15,7 +15,10 @@ void main(){
       return http.Response('{"userId": 1, "id": 2, "title": "Mock"}', 200);
     });
 
-    expect(await fetchAlbum(mockClient), isA<Album>());
+    expect(await fetchAlbum(mockClient), isA<Album>()
+    .having((album) => album.id, "id", 2)
+    .having((album) => album.userId, "userId", 1)
+    .having((album) => album.title, "title", "Mock"));
   });
 
   test("throws an exception if the http call completes with error", (){
